@@ -5,8 +5,31 @@ public class ChessBoard {
 
     public ChessBoard() {
         board = new Piece[8][8];
-        //todo
-        // ustaw pionki w sposob domyslny
+        board[0][0] = new Piece(PieceType.ROOK, PieceColor.BLACK);
+        board[0][1] = new Piece(PieceType.KNIGHT, PieceColor.BLACK);
+        board[0][2] = new Piece(PieceType.BISHOP, PieceColor.BLACK);
+        board[0][3] = new Piece(PieceType.QUEEN, PieceColor.BLACK);
+        board[0][4] = new Piece(PieceType.KING, PieceColor.BLACK);
+        board[0][5] = new Piece(PieceType.BISHOP, PieceColor.BLACK);
+        board[0][6] = new Piece(PieceType.KNIGHT, PieceColor.BLACK);
+        board[0][7] = new Piece(PieceType.ROOK, PieceColor.BLACK);
+
+        for (int i = 0; i <= 7; i++) {
+            board[1][i] = new Piece(PieceType.PAWN, PieceColor.BLACK);
+        }
+
+        board[6][0] = new Piece(PieceType.ROOK, PieceColor.WHITE);
+        board[6][1] = new Piece(PieceType.KNIGHT, PieceColor.WHITE);
+        board[6][2] = new Piece(PieceType.BISHOP, PieceColor.WHITE);
+        board[6][3] = new Piece(PieceType.QUEEN, PieceColor.WHITE);
+        board[6][4] = new Piece(PieceType.KING, PieceColor.WHITE);
+        board[6][5] = new Piece(PieceType.BISHOP, PieceColor.WHITE);
+        board[6][6] = new Piece(PieceType.KNIGHT, PieceColor.WHITE);
+        board[6][7] = new Piece(PieceType.ROOK, PieceColor.WHITE);
+
+        for (int i = 0; i <= 7; i++) {
+            board[1][i] = new Piece(PieceType.PAWN, PieceColor.WHITE);
+        }
     }
 
     public void performMove(Move move){
@@ -15,5 +38,9 @@ public class ChessBoard {
 
     public Piece getPiece(Position position){
         return null; //todo
+    }
+
+    public Piece[][] getBoard() {
+        return board;
     }
 }
