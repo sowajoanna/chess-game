@@ -5,8 +5,7 @@ public class Piece {
     PieceType type;
     PieceColor color;
 
-    public Piece(Integer pieceId, PieceType type, PieceColor color) {
-        this.pieceId = pieceId;
+    public Piece(PieceType type, PieceColor color) {
         this.type = type;
         this.color = color;
     }
