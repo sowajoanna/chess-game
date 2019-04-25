@@ -10,8 +10,8 @@ public class PositionTest {
     @Test
     public void constructor_givenA2_returnsPositionRow6Col1(){
         Position p = new Position("A2");
-        assertEquals(p.getRow(),6);
-        assertEquals(p.getColum(),0);
+        assertEquals(6, p.getRow());
+        assertEquals(0, p.getColumn());
     }
 
 }
