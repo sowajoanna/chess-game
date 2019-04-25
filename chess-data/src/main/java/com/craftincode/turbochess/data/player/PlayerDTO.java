@@ -1,10 +1,10 @@
-package com.craftincode.turbochess.domain;
+package com.craftincode.turbochess.data.player;
 
-public class Player {
+public class PlayerDTO {
     private Integer playerId;
     private String nick,password,email;
 
-    public Player(Integer playerId, String nick, String password, String email) {
+    public PlayerDTO(Integer playerId, String nick, String password, String email) {
         this.playerId = playerId;
         this.nick = nick;
         this.password = password;
@@ -41,5 +41,15 @@ public class Player {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerDTO{" +
+                "playerId=" + playerId +
+                ", nick='" + nick + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

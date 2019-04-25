@@ -1,5 +1,6 @@
-package com.craftincode.turbochess.dao;
+package com.craftincode.turbochess.data;
 
+import com.craftincode.turbochess.data.common.DAO;
 import com.craftincode.turbochess.domain.Game;
 
 import java.util.List;
