@@ -10,8 +10,6 @@ public class Position {
 
         this.column = columnSymbol - 'A';
         this.row = Math.abs(rowNumber - 8);
-
-        //todo convert string postion to ints (row, column)
     }
 
     public int getRow() {

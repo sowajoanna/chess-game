@@ -27,15 +27,17 @@ public class ChessBoard {
         for (int i = 0; i < board[6].length; i++) {
             board[6][i] = new Piece(PAWN, WHITE);
         }
-        //todo
-        // ustaw pionki w sposob domyslny
     }
 
     public void performMove(Move move){
-        // todo przesuń pionek zgodnie z move
+        Position currentPosition = move.getFromPosition();
+        Position futurePosition = move.getToPosition();
+
+        board[futurePosition.getRow()][futurePosition.getColumn()] = getPiece(currentPosition);
+        board[currentPosition.getRow()][currentPosition.getColumn()] = null;
     }
 
     public Piece getPiece(Position position){
-        return null; //todo
+        return board[position.getRow()][position.getColumn()];
     }
 }
