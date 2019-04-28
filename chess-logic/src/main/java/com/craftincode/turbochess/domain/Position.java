@@ -6,10 +6,8 @@ public class Position {
     public Position(String position) { // "A2"
         char columnSymbol = position.toUpperCase().charAt(0);
         char rowSymbol = position.charAt(1);
-        int rowNumber = rowSymbol - '0';
-
         this.column = columnSymbol - 'A';
-        this.row = Math.abs(rowNumber - 8);
+        this.row = 8 - (rowSymbol - '0');
     }
 
     public int getRow() {
