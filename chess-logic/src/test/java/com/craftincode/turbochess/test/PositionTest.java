@@ -13,5 +13,11 @@ public class PositionTest {
         assertEquals(6, p.getRow());
         assertEquals(0, p.getColumn());
     }
+    @Test
+    public void constructor_givenH8_returnsPositionRow0Col7(){
+        Position p = new Position("H8");
+        assertEquals(0, p.getRow());
+        assertEquals(7, p.getColumn());
+    }
 
 }
