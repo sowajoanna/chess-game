@@ -18,17 +18,17 @@ public class ChessBoard {
             board[1][i] = new Piece(PieceType.PAWN, PieceColor.BLACK);
         }
 
-        board[6][0] = new Piece(PieceType.ROOK, PieceColor.WHITE);
-        board[6][1] = new Piece(PieceType.KNIGHT, PieceColor.WHITE);
-        board[6][2] = new Piece(PieceType.BISHOP, PieceColor.WHITE);
-        board[6][3] = new Piece(PieceType.QUEEN, PieceColor.WHITE);
-        board[6][4] = new Piece(PieceType.KING, PieceColor.WHITE);
-        board[6][5] = new Piece(PieceType.BISHOP, PieceColor.WHITE);
-        board[6][6] = new Piece(PieceType.KNIGHT, PieceColor.WHITE);
-        board[6][7] = new Piece(PieceType.ROOK, PieceColor.WHITE);
+        board[7][0] = new Piece(PieceType.ROOK, PieceColor.WHITE);
+        board[7][1] = new Piece(PieceType.KNIGHT, PieceColor.WHITE);
+        board[7][2] = new Piece(PieceType.BISHOP, PieceColor.WHITE);
+        board[7][3] = new Piece(PieceType.QUEEN, PieceColor.WHITE);
+        board[7][4] = new Piece(PieceType.KING, PieceColor.WHITE);
+        board[7][5] = new Piece(PieceType.BISHOP, PieceColor.WHITE);
+        board[7][6] = new Piece(PieceType.KNIGHT, PieceColor.WHITE);
+        board[7][7] = new Piece(PieceType.ROOK, PieceColor.WHITE);
 
         for (int i = 0; i <= 7; i++) {
-            board[1][i] = new Piece(PieceType.PAWN, PieceColor.WHITE);
+            board[6][i] = new Piece(PieceType.PAWN, PieceColor.WHITE);
         }
     }
 
@@ -37,7 +37,9 @@ public class ChessBoard {
     }
 
     public Piece getPiece(Position position){
-        return null; //todo
+        int row = position.getRow();
+        int column = position.getColumn();
+        return board[row][column];
     }
 
     public Piece[][] getBoard() {

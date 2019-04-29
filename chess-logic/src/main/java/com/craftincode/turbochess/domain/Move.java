@@ -13,6 +13,14 @@ public class Move {
         this.toPosition = toPosition;
     }
 
+    public int verticalShift(){
+        return fromPosition.getRow() - toPosition.getRow();
+    }
+
+    public int horizontalShift(){
+        return fromPosition.getColumn() - toPosition.getColumn();
+    }
+
 
     public Position getFromPosition() {
         return fromPosition;
