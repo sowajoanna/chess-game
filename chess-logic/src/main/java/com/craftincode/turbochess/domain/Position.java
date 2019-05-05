@@ -3,6 +3,11 @@ package com.craftincode.turbochess.domain;
 public class Position {
     private int row, column;
 
+    public Position(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
+
     public Position(String position) { // "A2"
         char columnSymbol = position.toUpperCase().charAt(0);
         char rowSymbol = position.charAt(1);
