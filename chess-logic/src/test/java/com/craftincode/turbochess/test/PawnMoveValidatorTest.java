@@ -25,7 +25,7 @@ public class PawnMoveValidatorTest {
         PawnMoveValidator pawnMoveValidator = new PawnMoveValidator();
         assertTrue(pawnMoveValidator.isValid(move, chessBoard));
     }
-
+    ChessBoard chessBoard = new ChessBoard();
     @Test
     public void isValid_moveForwardBy1ButAnotherPieceIsInTheWay_returnsFalse() {
         Move move = new Move(new Position("A2"), new Position(("A3")));

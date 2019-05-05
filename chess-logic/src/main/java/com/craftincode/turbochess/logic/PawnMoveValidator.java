@@ -8,10 +8,8 @@ public class PawnMoveValidator implements MoveValidator {
 
         int horizontalShift = move.horizontalShift();
         int verticalModifier = chessBoard.getPiece(move.getFromPosition()).getColor() == PieceColor.BLACK ? -1 : 1;
-
         int verticalShift = move.verticalShift() * verticalModifier;
         int rowPosition = move.getFromPosition().getRow();
-
 
         if (verticalShift == 1 && !isOtherPieceInTheWay(move, chessBoard)) {
             return true;
@@ -24,7 +22,6 @@ public class PawnMoveValidator implements MoveValidator {
                 && isOpponentPieceInTheWay(move, chessBoard)) {
             return true;
         }
-
 
         if (chessBoard.getPiece(move.getToPosition()) != null) {
             return false;
