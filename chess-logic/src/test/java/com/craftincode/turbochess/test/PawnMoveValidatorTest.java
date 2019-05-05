@@ -24,9 +24,9 @@ public class PawnMoveValidatorTest {
 
     @Test
     public void isValid_moveForwardBy1_returnsTrue() {
-        board.setPiece(whitePawn, new Position("C3"));
+        board.setPiece(whitePawn, new Position("C2"));
         board.setPiece(null, new Position("C3"));
-        Move moveForward = new Move(new Position("C3"),new Position("C4"));
+        Move moveForward = new Move(new Position("C2"),new Position("C3"));
         MoveValidator moveValidator = new PawnMoveValidator();
         assertTrue(moveValidator.isValid(moveForward,board));
     }
