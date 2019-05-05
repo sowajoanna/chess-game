@@ -28,6 +28,14 @@ public class ChessBoard {
             board[6][i] = new Piece(PAWN, WHITE);
         }
     }
+    private ChessBoard(Piece[][] board) {
+        this.board = board;
+    }
+
+    public static ChessBoard getEmptyBoard(){
+        return new ChessBoard(new Piece[8][8]);
+    }
+
 
     public void performMove(Move move){
         Position currentPosition = move.getFromPosition();
@@ -40,4 +48,9 @@ public class ChessBoard {
     public Piece getPiece(Position position){
         return board[position.getRow()][position.getColumn()];
     }
+
+    public void setPiece(Piece piece, Position position){
+        board[position.getRow()][position.getColumn()] = piece;
+    }
+
 }
