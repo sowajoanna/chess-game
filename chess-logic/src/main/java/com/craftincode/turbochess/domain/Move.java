@@ -14,7 +14,7 @@ public class Move {
     }
 
     public int verticalShift(){
-        return fromPosition.getRow() - toPosition.getRow();
+        return toPosition.getRow() - fromPosition.getRow();
     }
 
     public int horizontalShift(){
