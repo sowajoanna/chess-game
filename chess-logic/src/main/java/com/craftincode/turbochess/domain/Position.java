@@ -1,15 +1,20 @@
 package com.craftincode.turbochess.domain;
 
-import com.craftincode.turbochess.logic.InvalidPositionString;
+import com.craftincode.turbochess.commons.InvalidPositionString;
 
 public class Position {
     private int row, column;
 
-    public Position(String position) { // "A2"
-        char[] array = position.toUpperCase().toCharArray();
-        this.row = 8 - array[1] + 48;
-        this.column = array[0] - 65;
-        if(column<0 || column > 7 || row < 0 || row > 7){
+    public Position(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
+
+    public Position(String position) { // A2
+        char[] coords = position.toUpperCase().toCharArray();
+        column = coords[0] - 'A';
+        row = 8 - (coords[1] - '0');
+        if(column <0 || column > 7 || row < 0 || row > 7){
             throw new InvalidPositionString();
         }
     }

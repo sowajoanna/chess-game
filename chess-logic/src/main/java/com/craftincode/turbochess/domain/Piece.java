@@ -12,6 +12,20 @@ public class Piece {
         this.color = color;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Piece piece = (Piece) o;
+        return color == piece.color &&
+                type == piece.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pieceId, type, color);
+    }
+
     public Integer getPieceId() {
         return pieceId;
     }

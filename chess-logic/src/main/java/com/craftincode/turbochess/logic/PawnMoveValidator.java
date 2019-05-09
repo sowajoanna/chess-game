@@ -1,43 +1,59 @@
 package com.craftincode.turbochess.logic;
 
-import com.craftincode.turbochess.domain.*;
+import com.craftincode.turbochess.domain.ChessBoard;
+import com.craftincode.turbochess.domain.Move;
+import com.craftincode.turbochess.domain.Piece;
+import com.craftincode.turbochess.domain.PieceColor;
 
 public class PawnMoveValidator implements MoveValidator {
     @Override
     public boolean isValid(Move move, ChessBoard chessBoard) {
+        Piece pieceToMove = chessBoard.getPiece(move.getFromPosition());
+        PieceColor pieceToMoveColor = pieceToMove.getColor();
+        int verticalModifier = calculateVerticalModifier(pieceToMoveColor);
 
-        int horizontalShift = move.horizontalShift();
-        int verticalModifier = chessBoard.getPiece(move.getFromPosition()).getColor() == PieceColor.BLACK ? -1 : 1;
-        int verticalShift = move.verticalShift() * verticalModifier;
-        int rowPosition = move.getFromPosition().getRow();
+       if(!moveIsWithinLegalRadius(move,verticalModifier)){
+           return false;
+       }
+       return true;
+    }
 
-        if (verticalShift == 1 && !isOtherPieceInTheWay(move, chessBoard)) {
-            return true;
-        } else if (verticalShift == 2 && !isOtherPieceInTheWay(move, chessBoard)) {
-            if (((chessBoard.getPiece(move.getFromPosition()).getColor() == PieceColor.BLACK) && rowPosition == 1) ||
-                    ((chessBoard.getPiece(move.getFromPosition()).getColor() == PieceColor.WHITE) && rowPosition == 6)) {
-                return true;
-            }
-        } else if (verticalShift == 1 && (horizontalShift == 1 || horizontalShift == -1)
-                && isOpponentPieceInTheWay(move, chessBoard)) {
-            return true;
+    private boolean moveIsWithinLegalRadius(Move move, int verticalModifier){
+        if (movedMoreThan2StepsVertically(move)) {
+            return false;
         }
-
-        if (chessBoard.getPiece(move.getToPosition()) != null) {
+        if (movedMoreThan1StepHorizontally(move)) {
+            return false;
+        }
+        if (noVerticalMovement(move)) {
+            return false;
+        }
+        if (movedBackwords(move, verticalModifier)) {
             return false;
         }
 
-        return false;
+        return true;
     }
 
-    private boolean isOtherPieceInTheWay(Move move, ChessBoard chessBoard) {
-        return (chessBoard.getPiece(move.getToPosition()) != null);
+    private int calculateVerticalModifier(PieceColor pieceColor) {
+        return pieceColor.equals(PieceColor.BLACK) ? -1 : 1;
     }
 
-    private boolean isOpponentPieceInTheWay(Move move, ChessBoard chessBoard) {
-        Piece otherPiece = chessBoard.getPiece(move.getToPosition());
-        Piece myPiece = chessBoard.getPiece(move.getFromPosition());
-
-        return (myPiece.getColor() != otherPiece.getColor());
+    private boolean movedBackwords(Move move, int verticalModifier) {
+        return move.verticalShift() * verticalModifier < 0;
     }
+
+    private boolean noVerticalMovement(Move move) {
+        return move.verticalShift() == 0;
+    }
+
+    private boolean movedMoreThan2StepsVertically(Move move) {
+        return Math.abs(move.verticalShift()) > 2;
+    }
+
+    private boolean movedMoreThan1StepHorizontally(Move move) {
+        return Math.abs(move.horizontalShift()) > 1;
+    }
+
+
 }
