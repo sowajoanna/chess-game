@@ -5,12 +5,15 @@ import com.craftincode.turbochess.logic.MoveValidator;
 import com.craftincode.turbochess.logic.QueenMoveValidator;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
 import static com.craftincode.turbochess.domain.PieceColor.BLACK;
 import static com.craftincode.turbochess.domain.PieceColor.WHITE;
 import static com.craftincode.turbochess.domain.PieceType.QUEEN;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
+@Category(ValidatorTests.class)
 public class QueenMoveValidatorTest {
     private static Piece whiteQueen = new Piece(QUEEN,WHITE);
     private static Piece blackQueen = new Piece(QUEEN, BLACK);
@@ -30,6 +33,7 @@ public class QueenMoveValidatorTest {
         assertTrue(moveValidator.isValid(moveVertical,chessBoard));
     }
     @Test
+    @Category(SlowTests.class)
     public void isValid_moveVerticalBy2WhenAnotherPieceOnPath_returnFalse(){
         chessBoard.setPiece(whiteQueen,new Position("C1"));
         chessBoard.setPiece(blackQueen, new Position("C2"));
