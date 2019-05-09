@@ -40,6 +40,10 @@ public class ChessBoard {
     }
 
 
+    public Piece[][] getBoard() {
+        throw new RuntimeException(); //todo wywalic to
+    }
+
     public void performMove(Move move) {
         Position currentPosition = move.getFromPosition();
         Position futurePosition = move.getToPosition();

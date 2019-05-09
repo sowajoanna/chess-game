@@ -49,4 +49,5 @@ public class Piece {
     public void setColor(PieceColor color) {
         this.color = color;
     }
+
 }
