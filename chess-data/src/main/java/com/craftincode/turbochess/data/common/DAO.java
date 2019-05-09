@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface DAO<T,I> {
     List<T> findAll() throws SQLException;
-    T findById(I id);
-    void create(T t);
-    void update(T t);
-    void delete(T t);
+    T findById(I id)throws SQLException;
+    void create(T t) throws SQLException;
+    void update(T t)throws SQLException;
+    void delete(T t)throws SQLException;
 }

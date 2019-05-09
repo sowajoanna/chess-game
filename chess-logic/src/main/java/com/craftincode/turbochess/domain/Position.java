@@ -1,5 +1,7 @@
 package com.craftincode.turbochess.domain;
 
+import com.craftincode.turbochess.commons.InvalidPositionString;
+
 public class Position {
     private int row, column;
 
@@ -8,11 +10,13 @@ public class Position {
         this.column = column;
     }
 
-    public Position(String position) { // "A2"
-        char columnSymbol = position.toUpperCase().charAt(0);
-        char rowSymbol = position.charAt(1);
-        this.column = columnSymbol - 'A';
-        this.row = 8 - (rowSymbol - '0');
+    public Position(String position) { // A2
+        char[] coords = position.toUpperCase().toCharArray();
+        column = coords[0] - 'A';
+        row = 8 - (coords[1] - '0');
+        if(column <0 || column > 7 || row < 0 || row > 7){
+            throw new InvalidPositionString();
+        }
     }
 
     public int getRow() {

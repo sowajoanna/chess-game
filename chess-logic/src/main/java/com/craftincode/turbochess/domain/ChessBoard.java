@@ -1,13 +1,18 @@
 package com.craftincode.turbochess.domain;
 
+import static com.craftincode.turbochess.domain.PieceColor.BLACK;
+import static com.craftincode.turbochess.domain.PieceColor.WHITE;
 import static com.craftincode.turbochess.domain.PieceType.*;
-import static com.craftincode.turbochess.domain.PieceColor.*;
 
 public class ChessBoard {
     private Piece[][] board;
 
-    public ChessBoard() {
-        board = new Piece[8][8];
+    private ChessBoard(Piece[][] board) {
+        this.board = board;
+    }
+
+    public static ChessBoard getDefaultBoard() {
+        Piece[][] board = new Piece[8][8];
         board[0][0] = board[0][7] = new Piece(ROOK, BLACK);
         board[0][1] = board[0][6] = new Piece(KNIGHT, BLACK);
         board[0][2] = board[0][5] = new Piece(BISHOP, BLACK);
@@ -27,17 +32,15 @@ public class ChessBoard {
         for (int i = 0; i < board[6].length; i++) {
             board[6][i] = new Piece(PAWN, WHITE);
         }
-    }
-    private ChessBoard(Piece[][] board) {
-        this.board = board;
+        return new ChessBoard(board);
     }
 
-    public static ChessBoard getEmptyBoard(){
+    public static ChessBoard getEmptyBoard() {
         return new ChessBoard(new Piece[8][8]);
     }
 
 
-    public void performMove(Move move){
+    public void performMove(Move move) {
         Position currentPosition = move.getFromPosition();
         Position futurePosition = move.getToPosition();
 
@@ -45,11 +48,11 @@ public class ChessBoard {
         board[currentPosition.getRow()][currentPosition.getColumn()] = null;
     }
 
-    public Piece getPiece(Position position){
+    public Piece getPiece(Position position) {
         return board[position.getRow()][position.getColumn()];
     }
 
-    public void setPiece(Piece piece, Position position){
+    public void setPiece(Piece piece, Position position) {
         board[position.getRow()][position.getColumn()] = piece;
     }
 

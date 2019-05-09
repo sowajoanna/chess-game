@@ -1,4 +1,4 @@
-package com.craftincode.turbochess.data;
+package com.craftincode.turbochess.data.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
