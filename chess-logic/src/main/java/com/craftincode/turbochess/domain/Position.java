@@ -5,6 +5,11 @@ import com.craftincode.turbochess.commons.InvalidPositionString;
 public class Position {
     private int row, column;
 
+    public Position(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
+
     public Position(String position) { // A2
         char[] coords = position.toUpperCase().toCharArray();
         column = coords[0] - 'A';

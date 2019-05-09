@@ -6,11 +6,11 @@ import com.craftincode.turbochess.logic.PawnMoveValidator;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.fail;
 import static com.craftincode.turbochess.domain.PieceType.*;
 import static com.craftincode.turbochess.domain.PieceColor.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class PawnMoveValidatorTest {
     private static Piece whitePawn = new Piece(PAWN, WHITE);
